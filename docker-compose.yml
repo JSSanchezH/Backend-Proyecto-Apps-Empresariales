@@ -1,0 +1,53 @@
+services:
+  #  --------------------------------------------
+  java-app-cra:
+    build:
+      context: ./human_resources
+      dockerfile: Dockerfile
+    container_name: java-app-cra
+    depends_on:
+      postgres-cra:
+        condition: service_healthy
+    ports:
+      - "8009:8080"
+    networks:
+      - app-network-cra
+  #  --------------------------------------------
+  postgres-cra:
+    build:
+      context: ./PostgreSQL
+      dockerfile: Dockerfile
+    container_name: postgres-cra
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "8011:5432"
+    networks:
+      - app-network-cra
+    environment:
+      POSTGRES_DB: human_resources
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1*2-3+4/
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  #  --------------------------------------------
+  adminer-cra:
+    image: adminer
+    container_name: adminer-cra
+    depends_on:
+      - postgres-cra
+    ports:
+      - "8010:8080"
+    networks:
+      - app-network-cra
+#  --------------------------------------------
+networks:
+  app-network-cra:
+    driver: bridge
+    name: app-network-cra
+volumes:
+  postgres-data:

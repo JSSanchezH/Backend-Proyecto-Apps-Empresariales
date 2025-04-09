@@ -13,7 +13,7 @@ public class State {
     private Long id; // Unique identifier for the state
 
     @Column(name = "name", nullable = false, length = 100) // Column annotation to specify the mapping of the name attribute to the database
-    // The name column is not nullable and has a maximum length of 50 characters
+    // The name column is not nullable and has a maximum length of 100 characters
     private String name; // Name of the state
 
     @ManyToOne // Many-to-one relationship with the Country entity

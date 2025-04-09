@@ -18,6 +18,10 @@ public class Continent {
     // The name column is not nullable and has a maximum length of 50 characters
     private String name; // Name of the continent
 
+    @OneToMany(mappedBy = "continent", cascade = CascadeType.ALL, orphanRemoval = true) // One-to-many relationship with the Country entity
+    private Country country; // The country associated with the continent
+    // The mappedBy attribute indicates that the "continent" field in the Country
+
     // Getters and Setters for accessing and modifying the attributes of the
     // Continent class
 
@@ -35,6 +39,14 @@ public class Continent {
 
     public void setName(String name) {
         this.name = name; // Sets the name of the continent
+    }
+
+    public Country getCountry() {
+        return country; // Returns the country associated with the continent
+    }
+
+    public void setCountry(Country country) {
+        this.country = country; // Sets the country associated with the continent
     }
 
 }

@@ -59,5 +59,4 @@ public class Department {
         this.company = company; // Sets the company associated with the department
     }
     
-    
 }

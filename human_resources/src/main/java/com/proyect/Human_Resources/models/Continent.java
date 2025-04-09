@@ -13,9 +13,9 @@ public class Continent {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generating the ID value
     private Long id; // Unique identifier for the continent
 
-    @Column(name = "name", nullable = false, length = 50) // Column annotation to specify the mapping of the name
+    @Column(name = "name", nullable = false, length = 100) // Column annotation to specify the mapping of the name
                                                           // attribute to the database
-    // The name column is not nullable and has a maximum length of 50 characters
+    // The name column is not nullable and has a maximum length of 100 characters
     private String name; // Name of the continent
 
     // Getters and Setters for accessing and modifying the attributes of the

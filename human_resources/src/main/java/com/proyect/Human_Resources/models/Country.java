@@ -12,8 +12,8 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generating the ID value
     private Long id; // Unique identifier for the country
 
-    @Column(name = "name", nullable = false, length = 50) // Column annotation to specify the mapping of the name attribute to the database
-    // The name column is not nullable and has a maximum length of 50 characters
+    @Column(name = "name", nullable = false, length = 100) // Column annotation to specify the mapping of the name attribute to the database
+    // The name column is not nullable and has a maximum length of 100 characters
     private String name; // Name of the country
 
     @ManyToOne // Many-to-one relationship with the Continent entity
@@ -47,5 +47,4 @@ public class Country {
         this.continent = continent; // Sets the continent associated with the country
     }
 
-    
 }

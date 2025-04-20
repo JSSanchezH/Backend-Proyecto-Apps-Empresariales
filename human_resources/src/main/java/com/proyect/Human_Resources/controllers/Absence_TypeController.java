@@ -52,5 +52,7 @@ public class Absence_TypeController {
             return "Error deleting absence type";
         }
     }
+
+    
     
 }

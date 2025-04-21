@@ -43,5 +43,9 @@ public class CountryService {
             return false;
         }
     }
+
+    public ArrayList<Country> getCountriesByContinent(String continent) {
+        return countryRepository.findByContinent(continent);
+    }
     
 }

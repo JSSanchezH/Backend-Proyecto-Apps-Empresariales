@@ -14,10 +14,10 @@ public class Employee {
     private Long id; // Unique identifier for the employee;
 
     @Column(name = "first_Name", nullable = false, length = 50) // Column annotation to specify the mapping of the lastname attribute to the database
-    private String Firstname; // Name of the employee
+    private String firstname; // Name of the employee
 
     @Column(name = "last_Name", nullable = false, length = 50) // Column annotation to specify the mapping of the lastname attribute to the database
-    private String Lastname; // Last name of the employee
+    private String lastname; // Last name of the employee
 
     @Column(name = "email", nullable = false, length = 50) // Column annotation to specify the mapping of the email attribute to the database
     private String email; // Email of the employee
@@ -28,7 +28,7 @@ public class Employee {
     @Column(name = "hire_Date", nullable = false) // Column annotation to specify the mapping of the Hire_Date attribute to the database
     private Date hireDate; // Date of hire of the employee
 
-    @OneToOne // One-to-one relationship with the Role entity
+    @ManyToOne // One-to-one relationship with the Role entity
     @JoinColumn(name = "role_id", nullable = false) // Specifies the foreign key column in the employees table that references the roles table
     private Role role; // The role associated with the employee
 
@@ -53,19 +53,19 @@ public class Employee {
     }
 
     public String getFirstname() {
-        return Firstname; // Returns the first name of the employee
+        return firstname; // Returns the first name of the employee
     }
 
     public void setFirstname(String firstname) {
-        Firstname = firstname; // Sets the first name of the employee
+        this.firstname = firstname; // Sets the first name of the employee
     }
 
     public String getLastname() {
-        return Lastname; // Returns the last name of the employee
+        return lastname; // Returns the last name of the employee
     }
 
     public void setLastname(String lastname) {
-        Lastname = lastname; // Sets the last name of the employee
+        this.lastname = lastname; // Sets the last name of the employee
     }
 
     public String getEmail() {

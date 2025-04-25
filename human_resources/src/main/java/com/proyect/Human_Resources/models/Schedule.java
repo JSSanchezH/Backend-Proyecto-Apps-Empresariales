@@ -26,6 +26,11 @@ public class Schedule {
     @Column(name = "break_End", nullable = false) // Column annotation to specify the mapping of the break_End attribute to the database
     private Time breakEnd; // End time of the break
 
+    @OneToOne
+    @JoinColumn(name = "employee_id", nullable = false) // Specifies the foreign key column in the schedules table that references the employees table
+    private Employee employee; // The employee associated with the schedule
+    
+
     // Getters and Setters for accessing and modifying the attributes of the Schedule class
     
     public Long getId() {
@@ -66,6 +71,14 @@ public class Schedule {
 
     public void setBreakEnd(Time breakEnd) {
         this.breakEnd = breakEnd; // Sets the end time of the break
+    }
+
+    public Employee getEmployee() {
+        return employee; // Returns the employee associated with the schedule
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee; // Sets the employee associated with the schedule
     }
     
 }

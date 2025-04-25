@@ -18,7 +18,7 @@ public class WorkAbsences {
     @JoinColumn(name = "employee_id", nullable = false) // Specifies the foreign key column in the work_absences table that references the employees table
     private Employee employee; // The employee associated with the work absence
 
-    @OneToOne // One-to-one relationship with the AbsenceType entity
+    @ManyToOne // One-to-one relationship with the AbsenceType entity
     @JoinColumn(name = "absence_type_id", nullable = false) // Specifies the foreign key column in the work_absences table that references the absence_types table
     private Absence_Type absenceType; // The type of absence associated with the work absence
 

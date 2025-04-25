@@ -31,7 +31,7 @@ public class Payroll {
     @Column(name = "total_Payment", nullable = false) // Column annotation to specify the mapping of the total_Payment attribute to the database
     private double totalPayment; // Total payment amount for the employee, calculated as base salary + bonuses
 
-    @OneToOne // One-to-one relationship with the Payment_Method entity
+    @ManyToOne // One-to-one relationship with the Payment_Method entity
     @JoinColumn(name = "payment_method_id", nullable = false) // Specifies the foreign key column in the payroll table that references the payment_methods table
     private Payment_Method paymentMethod; // The payment method used for the payroll record
 

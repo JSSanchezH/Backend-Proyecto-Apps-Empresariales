@@ -1,8 +1,12 @@
 package com.proyect.Human_Resources.services;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.proyect.Human_Resources.Repositories.IHeadquarterRepository;
 import com.proyect.Human_Resources.models.Headquarter;
 
 @Service
@@ -33,5 +37,14 @@ public class HeadquarterService {
         headquarterToUpdate.setPhone(headquarter.getPhone()); // Updates the phone number of the headquarter
         headquarterToUpdate.setCity(headquarter.getCity()); // Updates the city of the headquarter
         return headquarterRepository.save(headquarterToUpdate); // Saves the updated headquarter and returns it
+    }
+
+    public boolean deleteHeadquarter(long id) {
+        try {
+            headquarterRepository.deleteById(id); // Deletes the headquarter by its ID
+            return true; // Returns true if deletion was successful
+        } catch (Exception e) {
+            return false; // Returns false if there was an error during deletion
+        }
     }
 }

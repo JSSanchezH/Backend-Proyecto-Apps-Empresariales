@@ -1,6 +1,7 @@
 package com.proyect.Human_Resources.controllers;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,6 +36,11 @@ public class HeadquarterController {
     @PostMapping("/batch")
     public ArrayList<Headquarter> saveHeadquarters(@RequestBody ArrayList<Headquarter> headquarters) {
         return headquarterService.saveHeadquarters(headquarters); // Saves a list of headquarters and returns it
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Headquarter> getHeadquarterById(@PathVariable("id") long id) {
+        return headquarterService.getHeadquarterById(id); // Returns a headquarter by its ID
     }
 
     @PutMapping("/{id}")

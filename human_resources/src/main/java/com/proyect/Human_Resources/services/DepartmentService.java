@@ -32,8 +32,7 @@ public class DepartmentService {
     public Department updateDepartment(Department department, Long id) {
         Department departmentToUpdate = departmentRepository.findById(id).get(); // Retrieve the department to update
         departmentToUpdate.setName(department.getName()); // Update the name of the department
-        departmentToUpdate.setCity(department.getCity());
-        departmentToUpdate.setCompany(department.getCompany()); // Update the company of the department
+        departmentToUpdate.setHeadquarter(department.getHeadquarter()); // Update the headquarter of the department
         return departmentRepository.save(departmentToUpdate); // Save the updated department to the repository
     }
 

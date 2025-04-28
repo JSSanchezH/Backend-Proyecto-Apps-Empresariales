@@ -35,6 +35,11 @@ public class CityController {
         return cityService.saveCity(city); // Saves a new city and returns it
     }
 
+    @PostMapping("/batch")
+    public ArrayList<City> saveCities(@RequestBody ArrayList<City> cities) {
+        return cityService.saveCities(cities); // Saves a list of cities and returns it
+    }
+
     @GetMapping("/{id}")
     public Optional<City> getCityById(@PathVariable("id") long id) {
         return cityService.getCityById(id); // Returns a city by its ID

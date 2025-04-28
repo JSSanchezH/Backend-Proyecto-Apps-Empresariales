@@ -23,6 +23,10 @@ public class PayrollService {
         return payrollRepository.save(payroll); // Saves the payroll record to the database and returns the saved record
     }
 
+    public ArrayList<Payroll> savePayrolls(ArrayList<Payroll> payrolls) {
+        return (ArrayList<Payroll>) payrollRepository.saveAll(payrolls); // Saves a list of payroll records to the database and returns the saved records
+    }
+
     public Optional<Payroll> getPayrollById(long id) {
         return payrollRepository.findById(id); // Retrieves the payroll record by its ID
     }

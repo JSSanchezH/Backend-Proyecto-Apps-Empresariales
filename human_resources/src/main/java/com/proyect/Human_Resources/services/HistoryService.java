@@ -25,6 +25,10 @@ public class HistoryService {
         return historyRepository.save(history); // Saves the history record to the database and returns the saved record
     }
 
+    public ArrayList<History> saveHistories(ArrayList<History> histories) {
+        return (ArrayList<History>) historyRepository.saveAll(histories); // Saves a list of history records to the database and returns the saved records
+    }
+    
     // Method to retrieve a history record by its ID
     public Optional<History> getHistoryById(long id) {
         return historyRepository.findById(id); // Retrieves the history record by its ID

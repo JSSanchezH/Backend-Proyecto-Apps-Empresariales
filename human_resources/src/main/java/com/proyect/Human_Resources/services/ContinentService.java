@@ -1,6 +1,7 @@
 package com.proyect.Human_Resources.services;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class ContinentService {
 
     public Continent saveContinent(Continent continent) {
         return continentRepository.save(continent);
+    }
+
+    public List<Continent> saveContinents(List<Continent> continents) {
+        return continentRepository.saveAll(continents);
     }
 
     public Optional<Continent> getContinentById(long id) {

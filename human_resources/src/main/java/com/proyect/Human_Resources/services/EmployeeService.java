@@ -23,6 +23,10 @@ public class EmployeeService {
         return employeeRepository.save(employee); // Saves the provided employee to the database
     }
 
+    public ArrayList<Employee> saveEmployees(ArrayList<Employee> employees) {
+        return (ArrayList<Employee>) employeeRepository.saveAll(employees); // Saves a list of employees to the database
+    }
+
     public Optional<Employee> getEmployeeById(Long id) {
         return employeeRepository.findById(id); // Retrieves an employee by their ID from the database
     }

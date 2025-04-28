@@ -1,6 +1,7 @@
 package com.proyect.Human_Resources.controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,10 @@ import com.proyect.Human_Resources.services.ContinentService;
 @RestController
 @RequestMapping("/continents")
 public class ContinentController {
-   
+
     @Autowired
     private ContinentService continentService;
-    
+
     @GetMapping
     public ArrayList<Continent> getContinents() {
         return continentService.getContinents();
@@ -31,6 +32,11 @@ public class ContinentController {
     @PostMapping
     public Continent saveContinent(@RequestBody Continent continent) {
         return continentService.saveContinent(continent);
+    }
+
+    @PostMapping("/batch")
+    public List<Continent> saveContinents(@RequestBody List<Continent> continents) {
+        return continentService.saveContinents(continents);
     }
 
     @GetMapping(path = "/{id}")

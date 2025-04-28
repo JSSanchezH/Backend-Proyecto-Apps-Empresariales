@@ -23,6 +23,10 @@ public class RoleService {
         return roleRepository.save(role); 
     }
 
+    public ArrayList<Role> saveRoles(ArrayList<Role> roles){
+        return (ArrayList<Role>) roleRepository.saveAll(roles); 
+    }
+
     public Optional<Role> getRoleById(long id){
         return roleRepository.findById(id); 
     }

@@ -23,6 +23,10 @@ public class ScheduleService {
         return scheduleRepository.save(schedule); // Saves the schedule record to the database and returns the saved record
     }
 
+    public ArrayList<Schedule> saveSchedules(ArrayList<Schedule> schedules) {
+        return (ArrayList<Schedule>) scheduleRepository.saveAll(schedules); // Saves a list of schedule records to the database and returns the saved records
+    }
+
     public Optional<Schedule> getScheduleById(long id) {
         return scheduleRepository.findById(id); // Retrieves the schedule record by its ID
     }

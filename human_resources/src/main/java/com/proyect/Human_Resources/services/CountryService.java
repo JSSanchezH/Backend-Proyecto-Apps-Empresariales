@@ -23,6 +23,10 @@ public class CountryService {
         return countryRepository.save(country);
     }
 
+    public ArrayList<Country> saveCountries(ArrayList<Country> countries) {
+        return (ArrayList<Country>) countryRepository.saveAll(countries);
+    }
+
     public Optional<Country> getCountryById(long id) {
         return countryRepository.findById(id);
     }

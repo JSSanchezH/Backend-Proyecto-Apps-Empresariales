@@ -23,6 +23,10 @@ public class EvaluationService {
         return evaluationRepository.save(evaluation); // Saves the evaluation record to the database and returns the saved record
     }
 
+    public ArrayList<Evaluation> saveEvaluations(ArrayList<Evaluation> evaluations) {
+        return (ArrayList<Evaluation>) evaluationRepository.saveAll(evaluations); // Saves a list of evaluation records to the database and returns the saved records
+    }
+
     public Optional<Evaluation> getEvaluationById(long id) {
         return evaluationRepository.findById(id); // Retrieves the evaluation record by its ID
     }

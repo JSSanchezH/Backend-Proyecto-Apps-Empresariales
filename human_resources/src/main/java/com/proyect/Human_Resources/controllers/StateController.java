@@ -35,6 +35,11 @@ public class StateController {
         return stateService.saveState(state); // Saves a new state and returns it
     }
 
+    @PostMapping("/batch")
+    public ArrayList<State> createStates(@RequestBody ArrayList<State> states) {
+        return stateService.saveStates(states); // Saves a list of states and returns it
+    }
+
     @GetMapping("/{id}")
     public Optional<State> getStateById(@PathVariable("id") long id) {
         return stateService.getStateById(id); // Returns a state by its ID

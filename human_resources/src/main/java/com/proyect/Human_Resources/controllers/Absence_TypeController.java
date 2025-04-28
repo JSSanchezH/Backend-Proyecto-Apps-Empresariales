@@ -33,6 +33,11 @@ public class Absence_TypeController {
         return absenceTypeService.saveAbsenceType(absenceType);
     }
 
+    @PostMapping("/batch")
+    public ArrayList<Absence_Type> saveAbsenceTypes(@RequestBody ArrayList<Absence_Type> absenceTypes) {
+        return absenceTypeService.saveAbsenceTypes(absenceTypes);
+    }
+
     @GetMapping("/{id}")
     public Optional<Absence_Type> getAbsenceTypeById(@PathVariable("id") long id) {
         return absenceTypeService.getAbsenceTypeById(id);

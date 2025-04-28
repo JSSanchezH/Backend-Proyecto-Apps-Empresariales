@@ -34,6 +34,11 @@ public class HistoryController {
         return historyService.saveHistory(history); // Saves a new history record and returns it
     }
 
+    @PostMapping("/batch")
+    public ArrayList<History> saveHistories(@RequestBody ArrayList<History> histories) {
+        return historyService.saveHistories(histories); // Saves a list of history records and returns them
+    }
+
     @GetMapping("/{id}")
     public Optional<History> getHistoryById(@PathVariable("id")long id) {
         return historyService.getHistoryById(id); // Retrieves a history record by its ID

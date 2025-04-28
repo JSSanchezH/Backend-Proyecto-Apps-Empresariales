@@ -33,6 +33,11 @@ public class DepartmentController {
         return departmentService.saveDepartment(department);
     }
 
+    @PostMapping("/batch")
+    public ArrayList<Department> saveDepartments(@RequestBody ArrayList<Department> departments) {
+        return departmentService.saveDepartments(departments);
+    }
+
     @GetMapping(path = "/{id}")
     public Optional<Department> getDepartmentById(@PathVariable("id") long id) {
         return departmentService.getDepartmentById(id);
@@ -51,6 +56,5 @@ public class DepartmentController {
         } else {
             return "Error deleting department";
         }
-    }
-    
+    }    
 }

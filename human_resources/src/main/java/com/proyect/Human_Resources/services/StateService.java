@@ -23,6 +23,10 @@ public class StateService {
         return stateRepository.save(state);
     }
 
+    public ArrayList<State> saveStates(ArrayList<State> states) {
+        return (ArrayList<State>) stateRepository.saveAll(states);
+    }
+
     public Optional<State> getStateById(long id) {
         return stateRepository.findById(id);
     }

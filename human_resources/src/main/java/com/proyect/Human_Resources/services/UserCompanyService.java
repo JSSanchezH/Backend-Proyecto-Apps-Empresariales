@@ -23,6 +23,11 @@ public class UserCompanyService {
         return userCompanyRepository.save(userCompany); // Saves a new UserCompany record and returns it
     }
 
+    public ArrayList<UserCompany> saveUserCompanies(ArrayList<UserCompany> userCompanies) {
+        return (ArrayList<UserCompany>) userCompanyRepository.saveAll(userCompanies); // Saves a list of UserCompany records and returns it
+    }
+    
+
     public Optional<UserCompany> getUserCompanyById(long id) {
         return userCompanyRepository.findById(id); // Returns a UserCompany record by its ID
     }

@@ -25,6 +25,10 @@ public class DepartmentService {
         return departmentRepository.save(department); // Save the department to the repository
     }
 
+    public ArrayList<Department> saveDepartments(ArrayList<Department> departments) {
+        return (ArrayList<Department>) departmentRepository.saveAll(departments); // Save a list of departments to the repository
+    }
+
     public Optional<Department> getDepartmentById(Long id) {
         return departmentRepository.findById(id); // Retrieve a department by its ID from the repository
     }

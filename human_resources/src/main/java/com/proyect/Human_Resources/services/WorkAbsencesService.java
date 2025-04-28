@@ -23,6 +23,10 @@ public class WorkAbsencesService {
         return workAbsencesRepository.save(workAbsences); // Saves the work absences record to the database and returns the saved record
     }
 
+    public ArrayList<WorkAbsences> saveWorkAbsences(ArrayList<WorkAbsences> workAbsences) {
+        return (ArrayList<WorkAbsences>) workAbsencesRepository.saveAll(workAbsences); // Saves a list of work absences records to the database and returns the saved records
+    }
+
     public Optional<WorkAbsences> getWorkAbsencesById(long id) {
         return workAbsencesRepository.findById(id); // Retrieves the work absences record by its ID
     }

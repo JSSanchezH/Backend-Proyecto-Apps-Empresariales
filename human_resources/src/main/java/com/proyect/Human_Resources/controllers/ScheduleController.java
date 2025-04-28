@@ -33,6 +33,11 @@ public class ScheduleController {
         return scheduleService.saveSchedule(schedule); // Saves the schedule using the service and returns the saved schedule
     }
 
+    @PostMapping("/batch")
+    public ArrayList<Schedule> saveSchedules(@RequestBody ArrayList<Schedule> schedules) {
+        return scheduleService.saveSchedules(schedules); // Saves a list of schedules using the service and returns the saved schedules
+    }
+
     @GetMapping("/{id}")
     public Optional<Schedule> getScheduleById(@PathVariable Long id) {
         return scheduleService.getScheduleById(id); // Retrieves a schedule by its ID using the service

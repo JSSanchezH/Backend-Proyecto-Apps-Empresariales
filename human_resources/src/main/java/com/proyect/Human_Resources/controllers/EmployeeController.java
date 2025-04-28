@@ -36,6 +36,12 @@ public class EmployeeController {
         return employeeService.saveEmployee(employee); // Saves the provided employee to the service
     }
 
+    // Endpoint to save a batch of employees
+    @PostMapping("/batch")
+    public ArrayList<Employee> saveEmployees(@RequestBody ArrayList<Employee> employees) {
+        return employeeService.saveEmployees(employees); // Saves the provided list of employees to the service
+    }
+
     // Endpoint to get an employee by ID
     @GetMapping(path = "/{id}")
     public Optional<Employee> getEmployeeById(@PathVariable("id") long id) {

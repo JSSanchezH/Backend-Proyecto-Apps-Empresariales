@@ -35,6 +35,11 @@ public class WorkAbsenceController {
         return workAbsencesService.saveWorkAbsences(workAbsences); // Saves the new work absence record using the service
     }
 
+    @PostMapping("/batch")
+    public ArrayList<WorkAbsences> createWorkAbsences(@RequestBody ArrayList<WorkAbsences> workAbsences) {
+        return workAbsencesService.saveWorkAbsences(workAbsences); // Saves a list of work absence records using the service
+    }
+
     @GetMapping("/{id}")
     public Optional<WorkAbsences> getWorkAbsenceById(@PathVariable long id) {
         return workAbsencesService.getWorkAbsencesById(id); // Retrieves a work absence record by its ID using the service

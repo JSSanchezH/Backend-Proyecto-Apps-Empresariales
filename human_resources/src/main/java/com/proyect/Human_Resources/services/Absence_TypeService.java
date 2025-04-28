@@ -23,6 +23,10 @@ public class Absence_TypeService {
         return absenceTypeRepository.save(absenceType);
     }
 
+    public ArrayList<Absence_Type> saveAbsenceTypes(ArrayList<Absence_Type> absenceTypes) {
+        return (ArrayList<Absence_Type>) absenceTypeRepository.saveAll(absenceTypes);
+    }
+
     public Optional<Absence_Type> getAbsenceTypeById(long id) {
         return absenceTypeRepository.findById(id);
     }

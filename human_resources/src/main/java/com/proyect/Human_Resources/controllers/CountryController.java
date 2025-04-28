@@ -33,6 +33,11 @@ public class CountryController {
         return countryService.saveCountry(country);
     }
 
+    @PostMapping("/batch")
+    public ArrayList<Country> saveCountries(@RequestBody ArrayList<Country> countries) {
+        return countryService.saveCountries(countries);
+    }
+
     @GetMapping("/{id}")
     public Optional<Country> getCountryById(@PathVariable("id") long id) {
         return countryService.getCountryById(id);

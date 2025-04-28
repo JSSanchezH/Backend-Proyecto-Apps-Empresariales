@@ -33,6 +33,11 @@ public class RoleController {
         return roleService.saveRole(role);
     }
 
+    @PostMapping("/batch")
+    public ArrayList<Role> saveRoles(@RequestBody ArrayList<Role> roles) {
+        return roleService.saveRoles(roles);
+    }
+
     @GetMapping(path = "/{id}")
     public Optional<Role> getRoleById(@PathVariable("id") long id) {
         return roleService.getRoleById(id);

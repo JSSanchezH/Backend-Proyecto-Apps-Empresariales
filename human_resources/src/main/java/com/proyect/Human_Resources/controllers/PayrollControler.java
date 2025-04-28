@@ -35,6 +35,11 @@ public class PayrollControler {
         return payrollService.savePayroll(payroll); // Saves the payroll using the service and returns the saved payroll
     }
 
+    @PostMapping("/batch")
+    public ArrayList<Payroll> savePayrolls(@RequestBody ArrayList<Payroll> payrolls) {
+        return payrollService.savePayrolls(payrolls); // Saves a list of payrolls using the service and returns the saved payrolls
+    }
+
     @GetMapping("/{id}")
     public Optional<Payroll> getPayrollById(@PathVariable Long id) {
         return payrollService.getPayrollById(id); // Retrieves a payroll by its ID using the service

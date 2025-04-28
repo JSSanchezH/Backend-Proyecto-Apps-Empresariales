@@ -23,6 +23,10 @@ public class Payment_MethodService {
         return paymentMethodRepository.save(paymentMethod);
     }
 
+    public ArrayList<Payment_Method> savePayment_Methods(ArrayList<Payment_Method> paymentMethods) {
+        return (ArrayList<Payment_Method>) paymentMethodRepository.saveAll(paymentMethods);
+    }
+
     public Optional<Payment_Method> getPayment_MethodById(long id) {
         return paymentMethodRepository.findById(id);
     }

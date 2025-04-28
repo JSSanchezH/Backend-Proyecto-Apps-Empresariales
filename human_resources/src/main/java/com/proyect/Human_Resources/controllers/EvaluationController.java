@@ -33,6 +33,11 @@ public class EvaluationController {
         return evaluationService.saveEvaluation(evaluation); // Saves the evaluation record to the database and returns the saved record
     }
 
+    @PostMapping("/batch")
+    public ArrayList<Evaluation> saveEvaluations(@RequestBody ArrayList<Evaluation> evaluations) {
+        return evaluationService.saveEvaluations(evaluations); // Saves a list of evaluation records to the database and returns the saved records
+    }
+
     @GetMapping("/{id}")
     public Optional<Evaluation> getEvaluationById(@PathVariable long id) {
         return evaluationService.getEvaluationById(id); // Retrieves the evaluation record by its ID

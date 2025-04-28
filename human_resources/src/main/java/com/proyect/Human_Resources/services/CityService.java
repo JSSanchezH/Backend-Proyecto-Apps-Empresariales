@@ -23,6 +23,10 @@ public class CityService {
         return cityRepository.save(city); // Saves a new city and returns it
     }
 
+    public ArrayList<City> saveCities(ArrayList<City> cities) {
+        return (ArrayList<City>) cityRepository.saveAll(cities); // Saves a list of cities and returns it
+    }
+    
     public Optional<City> getCityById(long id) {
         return cityRepository.findById(id); // Returns a city by its ID
     }

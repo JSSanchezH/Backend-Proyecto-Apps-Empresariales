@@ -35,6 +35,11 @@ public class UserCompanyController {
         return userCompanyService.saveUserCompany(userCompany); // Saves a new UserCompany record and returns it
     }
 
+    @PostMapping("/batch")
+    public ArrayList<UserCompany> saveUserCompanies(@RequestBody ArrayList<UserCompany> userCompanies) {
+        return userCompanyService.saveUserCompanies(userCompanies); // Saves a list of UserCompany records and returns them
+    }
+
     @GetMapping("/{id}")
     public Optional<UserCompany> getUserCompanyById(@PathVariable("id") long id) {
         return userCompanyService.getUserCompanyById(id); // Returns a UserCompany record by its ID

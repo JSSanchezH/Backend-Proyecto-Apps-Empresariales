@@ -19,6 +19,10 @@ public class CompanyService {
         return (ArrayList<Company>) companyRepository.findAll();
     }
 
+    public ArrayList<Company> saveCompanies(ArrayList<Company> companies) {
+        return (ArrayList<Company>) companyRepository.saveAll(companies);
+    }
+
     public Company saveCompany(Company company) {
         return companyRepository.save(company);
     }

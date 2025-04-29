@@ -33,6 +33,11 @@ public class CompanyController {
         return companyService.saveCompany(company);
     }
 
+    @PostMapping("/batch")
+    public ArrayList<Company> saveCompanies(@RequestBody ArrayList<Company> companies) {
+        return companyService.saveCompanies(companies);
+    }
+
     @GetMapping("/{id}")
     public Optional<Company> getCompanyById(@PathVariable("id") long id) {
         return companyService.getCompanyById(id);

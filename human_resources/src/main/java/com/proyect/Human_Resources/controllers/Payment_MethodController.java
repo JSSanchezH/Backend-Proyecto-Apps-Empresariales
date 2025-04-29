@@ -33,6 +33,11 @@ public class Payment_MethodController {
         return paymentMethodService.savePayment_Method(paymentMethod);
     }
 
+    @PostMapping("/batch")
+    public ArrayList<Payment_Method> savePayment_Methods(@RequestBody ArrayList<Payment_Method> paymentMethods) {
+        return paymentMethodService.savePayment_Methods(paymentMethods);
+    }
+
     @GetMapping(path = "/{id}")
     public Optional<Payment_Method> getPayment_MethodById(@PathVariable("id") long id) {
         return paymentMethodService.getPayment_MethodById(id);

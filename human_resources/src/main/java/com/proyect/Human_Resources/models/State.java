@@ -43,4 +43,8 @@ public class State {
         return country; // Returns the country associated with the state
     }
 
+    public void setCountry(Country country) {
+        this.country = country; // Sets the country associated with the state
+    }
+
 }

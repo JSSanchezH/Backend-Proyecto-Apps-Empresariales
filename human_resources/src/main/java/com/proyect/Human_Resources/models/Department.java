@@ -16,14 +16,9 @@ public class Department {
     // The name column is not nullable and has a maximum length of 100 characters
     private String name; // Name of the department
 
-    @OneToOne // One-to-one relationship with the City entity
-    @JoinColumn(name = "city_id", nullable = false) // Specifies the foreign key column in the departments table that references the cities table
-    private City city; // The city associated with the department
-
-    @ManyToOne // Many-to-one relationship with the Company entity
-    @JoinColumn(name = "company_id", nullable = false) // Specifies the foreign key column in the departments table that references the companies table
-    private Company company; // The company associated with the department
-    // The company_id column in the departments table references the id column in the companies table
+    @ManyToOne // Specifies a many-to-one relationship with the headquarter entity
+    @JoinColumn(name = "headquarter_id", nullable = false) // Specifies the foreign key column in the departments table that references the headquarters table
+    private Headquarter headquarter; // The headquarter associated with the department
 
     // Getters and Setters for accessing and modifying the attributes of the Department class
 
@@ -43,20 +38,12 @@ public class Department {
         this.name = name; // Sets the name of the department
     }
 
-    public City getCity() {
-        return city; // Returns the city associated with the department
+    public Headquarter getHeadquarter() {
+        return headquarter; // Returns the headquarter associated with the department
     }
 
-    public void setCity(City city) {
-        this.city = city; // Sets the city associated with the department
-    }
-
-    public Company getCompany() {
-        return company; // Returns the company associated with the department
-    }
-
-    public void setCompany(Company company) {
-        this.company = company; // Sets the company associated with the department
+    public void setHeadquarter(Headquarter headquarter) {
+        this.headquarter = headquarter; // Sets the headquarter associated with the department
     }
     
 }

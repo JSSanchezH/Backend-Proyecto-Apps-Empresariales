@@ -34,7 +34,7 @@ public class Evaluation {
     private long precision; // Precision score of the employee in the evaluation
     
     @Column(name = "collaboration", nullable = false) // Column annotation to specify the mapping of the collaboration attribute to the database
-    private long colaboration; // Collaboration score of the employee in the evaluation
+    private long collaboration; // Collaboration score of the employee in the evaluation
 
     @Column(name = "proactivity", nullable = false) // Column annotation to specify the mapping of the proactivity attribute to the database
     private long proactivity; // Proactivity score of the employee in the evaluation
@@ -97,12 +97,12 @@ public class Evaluation {
         this.precision = precision; // Sets the precision score of the employee in the evaluation
     }
 
-    public long getColaboration() {
-        return colaboration; // Returns the collaboration score of the employee in the evaluation
+   public long getCollaboration() {
+        return collaboration; // Returns the collaboration score of the employee in the evaluation
     }
 
-    public void setColaboration(long colaboration) {
-        this.colaboration = colaboration; // Sets the collaboration score of the employee in the evaluation
+    public void setCollaboration(long collaboration) {
+        this.collaboration = collaboration; // Sets the collaboration score of the employee in the evaluation
     }
 
     public long getProactivity() {

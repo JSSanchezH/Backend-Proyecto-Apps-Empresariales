@@ -24,6 +24,9 @@ public class UserCompany {
     @Column(name = "password", nullable = false, length = 50) // Column annotation to specify the mapping of the password attribute to the database
     private String password; // Password of the user associated with the company
 
+    @Column(name = "api_key", nullable = false, length = 30) // Column annotation to specify the mapping of the api_key attribute to the database
+    private String apiKey; // API key for the user associated with the company
+
     // Getters and Setters for accessing and modifying the attributes of the UserCompany class
 
     public Long getId() {
@@ -57,4 +60,13 @@ public class UserCompany {
     public void setPassword(String password) {
         this.password = password; // Sets the password of the user associated with the company
     }
+
+    public String getApiKey() {
+        return apiKey; // Returns the API key of the user associated with the company
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey; // Sets the API key of the user associated with the company
+    }
+    
 }

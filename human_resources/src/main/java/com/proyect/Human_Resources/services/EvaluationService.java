@@ -39,7 +39,7 @@ public class EvaluationService {
         evaluationToUpdate.setPerformance(evaluation.getPerformance()); // Updates the performance score of the employee in the evaluation
         evaluationToUpdate.setCourtesy(evaluation.getCourtesy()); // Updates the courtesy score of the employee in the evaluation
         evaluationToUpdate.setPrecision(evaluation.getPrecision()); // Updates the precision score of the employee in the evaluation
-        evaluationToUpdate.setColaboration(evaluation.getColaboration()); // Updates the collaboration score of the employee in the evaluation
+        evaluationToUpdate.setCollaboration(evaluation.getCollaboration()); // Updates the collaboration score of the employee in the evaluation
         evaluationToUpdate.setProactivity(evaluation.getProactivity()); // Updates the proactivity score of the employee in the evaluation
         return evaluationRepository.save(evaluationToUpdate); // Saves the updated evaluation record and returns it
     }

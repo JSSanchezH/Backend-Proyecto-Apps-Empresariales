@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyect.Human_Resources.models.Department;
+import com.proyect.Human_Resources.models.UserCompany;
+import com.proyect.Human_Resources.services.AuthService;
 import com.proyect.Human_Resources.services.DepartmentService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/departments")
@@ -23,9 +27,13 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
+    @Autowired
+    private AuthService authService;
+
     @GetMapping
-    public ArrayList<Department> getDepartments() {
-        return departmentService.getDepartments();
+    public ArrayList<Department> getDepartments(HttpServletRequest request) {
+        UserCompany userCompany = authService.getAuthenticatedUser(request);
+        return departmentService.getDepartmentsByCompanyNit(userCompany.getCompany().getNit());
     }
 
     @PostMapping

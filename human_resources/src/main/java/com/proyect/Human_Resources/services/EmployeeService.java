@@ -15,7 +15,7 @@ public class EmployeeService {
     @Autowired
     private IEmployeRepository employeeRepository; // Repository for accessing employee data
 
-    public ArrayList<Employee> getEmployeesByCompanyNit(Long nit) {
+    public ArrayList<Employee> getEmployeesByCompanyNit(long nit) {
         return employeeRepository.findByDepartmentHeadquarterCompanyNit(nit);
     }
 

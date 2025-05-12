@@ -11,5 +11,5 @@ public interface IEmployeRepository extends JpaRepository<Employee, Long> {
 
     //Find employees by company id
 
-    public ArrayList<Employee> findByDepartmentHeadquarterCompanyNit(Long nit); // Method to find employees by company Nit
+    public ArrayList<Employee> findByDepartmentHeadquarterCompanyNit(long nit); // Method to find employees by company Nit
 }

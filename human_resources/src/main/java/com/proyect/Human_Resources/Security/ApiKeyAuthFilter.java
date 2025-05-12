@@ -1,6 +1,9 @@
 package com.proyect.Human_Resources.Security;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,16 +18,40 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component // Indicates that this class is a Spring component
-public class ApiKeyAuthFilter extends OncePerRequestFilter { // Extends OncePerRequestFilter to ensure the filter is executed once per request
+public class ApiKeyAuthFilter extends OncePerRequestFilter { // Extends OncePerRequestFilter to ensure the filter is
+                                                             // executed once per request
 
     @Autowired
     private IUserCompanyRepository userCompanyRepository; // Injecting the IUserCompanyRepository dependency
+
+    private static final List<String> PUBLIC_PATHS = new ArrayList<String>(Arrays.asList(
+            "/continents",
+            "/countries",
+            "/states",
+            "/cities",
+            "/companies",
+            "/UserCompany",
+            "/absence_types",
+            "/payment-method",
+            "/roles"));
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
             HttpServletResponse response,
             FilterChain filterChain)
             throws ServletException, IOException {
+
+        String path = request.getRequestURI();
+
+        // Check if the request path is public
+
+        boolean isPublic = PUBLIC_PATHS.stream().anyMatch(path::startsWith);
+        if (isPublic) {
+            // If the path is public, continue with the filter chain
+            filterChain.doFilter(request, response);
+            return;     
+            
+        }
 
         String apiKey = request.getHeader("X-API-KEY");
 

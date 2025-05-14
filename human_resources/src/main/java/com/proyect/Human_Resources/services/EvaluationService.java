@@ -15,8 +15,8 @@ public class EvaluationService {
     @Autowired
     private IEvaluationRepository evaluationRepository; // Injecting the IEvaluationRepository dependency
 
-    public ArrayList<Evaluation> getEvaluations() {
-        return (ArrayList<Evaluation>) evaluationRepository.findAll(); // Retrieves all evaluations records from the database
+    public ArrayList<Evaluation> getEvaluations(long nit) {
+        return (ArrayList<Evaluation>) evaluationRepository.findByEmployeeDepartmentHeadquarterCompanyNit(nit); // Retrieves all evaluations records from the database
     }
 
     public Evaluation saveEvaluation(Evaluation evaluation) {

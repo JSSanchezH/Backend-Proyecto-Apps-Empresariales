@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyect.Human_Resources.models.Evaluation;
+import com.proyect.Human_Resources.models.UserCompany;
+import com.proyect.Human_Resources.services.AuthService;
 import com.proyect.Human_Resources.services.EvaluationService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/evaluations") // Base URL for the EvaluationController
@@ -23,9 +27,13 @@ public class EvaluationController {
     @Autowired
     private EvaluationService evaluationService; // Injecting the EvaluationService dependency
 
+    @Autowired
+    private AuthService authService; // Injecting the authService dependency
+
     @GetMapping
-    public ArrayList<Evaluation> getEvaluations() {
-        return evaluationService.getEvaluations(); // Retrieves all evaluations records from the database
+    public ArrayList<Evaluation> getEvaluations(HttpServletRequest request) {
+        UserCompany userCompany = authService.getAuthenticatedUser(request); // Retrieves the authenticated user's company information
+        return evaluationService.getEvaluations(userCompany.getCompany().getNit()); // Retrieves all evaluations records from the database
     }
 
     @PostMapping

@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.proyect.Human_Resources.models.UserCompany;
 import com.proyect.Human_Resources.models.WorkAbsences;
+import com.proyect.Human_Resources.services.AuthService;
 import com.proyect.Human_Resources.services.WorkAbsencesService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/absences")
@@ -23,11 +27,15 @@ public class WorkAbsenceController {
     @Autowired
     private WorkAbsencesService workAbsencesService; // Injecting the WorkAbsencesService dependency
 
+    @Autowired
+    private AuthService authService; // Injecting the AuthService dependency
+
     // Define endpoints for handling HTTP requests related to work absences here
 
     @GetMapping
-    public ArrayList<WorkAbsences> getAllWorkAbsences() {
-        return workAbsencesService.getWorkAbsences(); // Retrieves all work absences records from the service
+    public ArrayList<WorkAbsences> getAllWorkAbsences(HttpServletRequest request) {
+        UserCompany userCompany = authService.getAuthenticatedUser(request); // Get the authenticated user
+        return workAbsencesService.getWorkAbsences(userCompany.getCompany().getNit()); // Returns all work absences for the user's company
     }
 
     @PostMapping

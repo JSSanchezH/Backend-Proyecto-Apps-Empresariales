@@ -15,8 +15,8 @@ public class ScheduleService {
     @Autowired 
     private IScheduleReposiory scheduleRepository; // Injecting the IScheduleRepository dependency
 
-    public ArrayList<Schedule> getSchedules() {
-        return (ArrayList<Schedule>) scheduleRepository.findAll(); // Retrieves all schedule records from the database
+    public ArrayList<Schedule> getSchedules(long nit) {
+        return (ArrayList<Schedule>) scheduleRepository.findByEmployeeDepartmentHeadquarterCompanyNit(nit); // Retrieves all schedule records from the database
     }
 
     public Schedule saveSchedule(Schedule schedule) {

@@ -15,8 +15,8 @@ public class WorkAbsencesService {
     @Autowired
     private IWorkAbsencesRepository workAbsencesRepository; // Injecting the IWorkAbsencesRepository dependency
 
-    public ArrayList<WorkAbsences> getWorkAbsences() {
-        return (ArrayList<WorkAbsences>) workAbsencesRepository.findAll(); // Retrieves all work absences records from the database
+    public ArrayList<WorkAbsences> getWorkAbsences(long nit) {
+        return (ArrayList<WorkAbsences>) workAbsencesRepository.findByEmployeeDepartmentHeadquarterCompanyNit(nit); // Retrieves all work absences records from the database
     }
 
     public WorkAbsences saveWorkAbsences(WorkAbsences workAbsences) {

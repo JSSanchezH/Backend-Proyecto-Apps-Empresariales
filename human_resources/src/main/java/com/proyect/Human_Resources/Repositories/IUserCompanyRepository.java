@@ -6,4 +6,6 @@ import com.proyect.Human_Resources.models.UserCompany;
 
 public interface IUserCompanyRepository extends JpaRepository<UserCompany, Long> {
     // Custom query methods can be defined here if needed
+
+    public UserCompany findByApiKey(String apiKey); // Method to find a UserCompany by API key
 }

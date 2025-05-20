@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyect.Human_Resources.models.Payroll;
+import com.proyect.Human_Resources.models.UserCompany;
+import com.proyect.Human_Resources.services.AuthService;
 import com.proyect.Human_Resources.services.PayrollService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/payrolls") // Specifies the base URL for this controller
@@ -23,11 +27,15 @@ public class PayrollControler {
     @Autowired
     private PayrollService payrollService; // Injecting the PayrollService dependency
 
+    @Autowired
+    private AuthService authService; // Injecting the AuthService dependency
     // Add methods to handle HTTP requests for payrolls here 
 
     @GetMapping
-    public ArrayList<Payroll> getPayrolls() {
-        return payrollService.getPayrolls(); // Retrieves all payrolls from the service
+    public ArrayList<Payroll> getPayrolls(HttpServletRequest request) {
+        UserCompany userCompany = authService.getAuthenticatedUser(request); // Retrieves the authenticated user's company information
+        return payrollService.getPayrolls(userCompany.getCompany().getNit()); // Retrieves all payroll records from the database
+    // Returns a list of payrolls for the authenticated user's company
     }
 
     @PostMapping

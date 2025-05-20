@@ -14,9 +14,9 @@ public class EmployeeService {
 
     @Autowired
     private IEmployeRepository employeeRepository; // Repository for accessing employee data
-    
-    public ArrayList <Employee> getEmployees() {
-        return (ArrayList<Employee>) employeeRepository.findAll(); // Retrieves all employees from the database
+
+    public ArrayList<Employee> getEmployeesByCompanyNit(long nit) {
+        return employeeRepository.findByDepartmentHeadquarterCompanyNit(nit);
     }
 
     public Employee saveEmployee(Employee employee) {
@@ -53,5 +53,5 @@ public class EmployeeService {
             return false; // Returns false if there was an error during deletion
         }
     }
-    
+
 }

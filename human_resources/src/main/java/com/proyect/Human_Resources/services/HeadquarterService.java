@@ -15,8 +15,8 @@ public class HeadquarterService {
     @Autowired
     private IHeadquarterRepository headquarterRepository; // Repository to handle database operations for headquarters
 
-    public ArrayList<Headquarter> getHeadquarters() {
-        return (ArrayList<Headquarter>) headquarterRepository.findAll(); // Returns a list of all headquarters
+    public ArrayList<Headquarter> getHeadquarters(long nit) {
+        return headquarterRepository.findByCompanyNit(nit); // Returns a list of all headquarters
     }
 
     public Headquarter saveHeadquarter(Headquarter headquarter) {

@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyect.Human_Resources.models.Headquarter;
+import com.proyect.Human_Resources.models.UserCompany;
+import com.proyect.Human_Resources.services.AuthService;
 import com.proyect.Human_Resources.services.HeadquarterService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/headquarters")
@@ -23,9 +27,13 @@ public class HeadquarterController {
     @Autowired
     private HeadquarterService headquarterService; // Service to handle business logic for headquarters
 
+    @Autowired
+    private AuthService authService; // Service to handle authentication
+
     @GetMapping
-    public ArrayList<Headquarter> getAllHeadquarters() {
-        return headquarterService.getHeadquarters(); // Returns a list of all headquarters
+    public ArrayList<Headquarter> getAllHeadquarters(HttpServletRequest request) {
+        UserCompany userCompany = authService.getAuthenticatedUser(request); // Get the authenticated user
+        return headquarterService.getHeadquarters(userCompany.getCompany().getNit()); // Returns all headquarters for the user's company
     }
 
     @PostMapping

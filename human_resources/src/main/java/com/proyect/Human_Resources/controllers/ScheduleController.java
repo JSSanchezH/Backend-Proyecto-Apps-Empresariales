@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyect.Human_Resources.models.Schedule;
+import com.proyect.Human_Resources.models.UserCompany;
+import com.proyect.Human_Resources.services.AuthService;
 import com.proyect.Human_Resources.services.ScheduleService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/schedules") // Specifies the base URL for this controller
@@ -23,9 +27,13 @@ public class ScheduleController {
     @Autowired
     private ScheduleService scheduleService; // Injecting the ScheduleService dependency
 
+    @Autowired
+    private AuthService authService; // Injecting the AuthService dependency
+
     @GetMapping
-    public ArrayList<Schedule> getSchedules() {
-        return scheduleService.getSchedules(); // Retrieves all schedules from the service
+    public ArrayList<Schedule> getSchedules(HttpServletRequest request) {
+        UserCompany userCompany = authService.getAuthenticatedUser(request); // Retrieves the authenticated user's company information
+        return scheduleService.getSchedules(userCompany.getCompany().getNit()); // Retrieves all schedules for the user's company
     }
 
     @PostMapping

@@ -2,6 +2,7 @@ package com.proyect.Human_Resources.services;
 
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,11 @@ import com.proyect.Human_Resources.models.UserCompany;
 
 @Service
 public class UserCompanyService {
-    
+
+    private String generateApiKey() {
+        return UUID.randomUUID().toString().replace("-", "").substring(0, 30);
+    }
+
     @Autowired
     private IUserCompanyRepository userCompanyRepository; // Repository to handle database operations for UserCompany
 
@@ -20,20 +25,22 @@ public class UserCompanyService {
     }
 
     public UserCompany saveUserCompany(UserCompany userCompany) {
+        userCompany.setApiKey(generateApiKey());
         return userCompanyRepository.save(userCompany); // Saves a new UserCompany record and returns it
     }
 
     public ArrayList<UserCompany> saveUserCompanies(ArrayList<UserCompany> userCompanies) {
-        return (ArrayList<UserCompany>) userCompanyRepository.saveAll(userCompanies); // Saves a list of UserCompany records and returns it
+        return (ArrayList<UserCompany>) userCompanyRepository.saveAll(userCompanies); // Saves a list of UserCompany
+                                                                                      // records and returns it
     }
-    
 
     public Optional<UserCompany> getUserCompanyById(long id) {
         return userCompanyRepository.findById(id); // Returns a UserCompany record by its ID
     }
 
-    public UserCompany updateUserCompany(UserCompany userCompany, long id){
-        UserCompany userCompanyToUpdate = userCompanyRepository.findById(id).get(); // Retrieves the UserCompany record to update
+    public UserCompany updateUserCompany(UserCompany userCompany, long id) {
+        UserCompany userCompanyToUpdate = userCompanyRepository.findById(id).get(); // Retrieves the UserCompany record
+                                                                                    // to update
         userCompanyToUpdate.setCompany(userCompany.getCompany());
         userCompanyToUpdate.setUserName(userCompany.getUserName()); // Updates the username
         userCompanyToUpdate.setPassword(userCompany.getPassword()); // Updates the password

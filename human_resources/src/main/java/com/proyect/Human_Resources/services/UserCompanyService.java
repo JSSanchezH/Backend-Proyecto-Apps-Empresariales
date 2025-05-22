@@ -25,6 +25,10 @@ public class UserCompanyService {
     }
 
     public UserCompany saveUserCompany(UserCompany userCompany) {
+        UserCompany existingUser = userCompanyRepository.findByUserName(userCompany.getUserName());
+        if (existingUser.isPresent()) {
+            throw new UserAlreadyExistsException("User already exists");
+        }
         userCompany.setApiKey(generateApiKey());
         return userCompanyRepository.save(userCompany); // Saves a new UserCompany record and returns it
     }

@@ -8,4 +8,7 @@ public interface IUserCompanyRepository extends JpaRepository<UserCompany, Long>
     // Custom query methods can be defined here if needed
 
     public UserCompany findByApiKey(String apiKey); // Method to find a UserCompany by API key
+
+    public UserCompany findByUserName(String userName); // Method to find a UserCompany by user Name
+
 }

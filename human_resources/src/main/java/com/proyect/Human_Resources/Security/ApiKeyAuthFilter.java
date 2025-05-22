@@ -32,7 +32,7 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter { // Extends OncePerR
             "/companies",
             "/UserCompany",
             "/absence_types",
-            "/payment-method",
+            "/payment-methods",
             "/roles"));
 
     @Override
@@ -49,8 +49,8 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter { // Extends OncePerR
         if (isPublic) {
             // If the path is public, continue with the filter chain
             filterChain.doFilter(request, response);
-            return;     
-            
+            return;
+
         }
 
         String apiKey = request.getHeader("X-API-KEY");

@@ -37,7 +37,8 @@ public class UserCompanyController {
 
     @PostMapping("/batch")
     public ArrayList<UserCompany> saveUserCompanies(@RequestBody ArrayList<UserCompany> userCompanies) {
-        return userCompanyService.saveUserCompanies(userCompanies); // Saves a list of UserCompany records and returns them
+        return userCompanyService.saveUserCompanies(userCompanies); // Saves a list of UserCompany records and returns
+                                                                    // them
     }
 
     @GetMapping("/{id}")
@@ -47,7 +48,8 @@ public class UserCompanyController {
 
     @PutMapping("/{id}")
     public UserCompany updateUserCompany(@RequestBody UserCompany userCompany, @PathVariable("id") long id) {
-        return userCompanyService.updateUserCompany(userCompany, id); // Updates a UserCompany record by its ID and returns the updated record
+        return userCompanyService.updateUserCompany(userCompany, id); // Updates a UserCompany record by its ID and
+                                                                      // returns the updated record
     }
 
     @DeleteMapping("/{id}")

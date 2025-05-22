@@ -21,10 +21,10 @@ public class UserCompany {
     @Column(name = "username", nullable = false, length = 50) // Column annotation to specify the mapping of the username attribute to the database
     private String userName; // Username of the user associated with the company
 
-    @Column(name = "password", nullable = false, length = 50) // Column annotation to specify the mapping of the password attribute to the database
+    @Column(name = "password", nullable = false, length = 150) // Column annotation to specify the mapping of the password attribute to the database
     private String password; // Password of the user associated with the company
 
-    @Column(name = "api_key", nullable = false, length = 30) // Column annotation to specify the mapping of the api_key attribute to the database
+    @Column(name = "api_key", nullable = false, length = 100) // Column annotation to specify the mapping of the api_key attribute to the database
     private String apiKey; // API key for the user associated with the company
 
     // Getters and Setters for accessing and modifying the attributes of the UserCompany class

@@ -33,7 +33,8 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter { // Extends OncePerR
             "/UserCompany",
             "/absence_types",
             "/payment-methods",
-            "/roles"));
+            "/roles",
+            "/auth"));
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,

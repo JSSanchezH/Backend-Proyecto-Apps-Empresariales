@@ -33,6 +33,22 @@ public class AuthService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    public String login(String userName, String password) {
+        Optional<UserCompany> userOptional = userCompanyRepository.findByUserName(userName);
+
+        if (userOptional.isEmpty()) {
+            throw new RuntimeException("User not found");
+        }
+
+        UserCompany user = userOptional.get();
+
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new RuntimeException("Invalid credentials");
+        }
+
+        return user.getApiKey();
+    }
+
     public String registerCompanyWithUser(CompanyRegisterRequest request) {
 
         Optional<UserCompany> existingUser = userCompanyRepository

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyect.Human_Resources.dto.CompanyRegisterRequest;
+import com.proyect.Human_Resources.dto.CompanyLoginRequest;
+
 import com.proyect.Human_Resources.services.AuthService;
 
 @RestController
@@ -26,6 +28,16 @@ public class AuthController {
             return ResponseEntity.ok(result);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody LoginRequest request) {
+        try {
+            String apiKey = authService.login(request.getUserName(), request.getPassword());
+            return ResponseEntity.ok(apiKey);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
     }
 }

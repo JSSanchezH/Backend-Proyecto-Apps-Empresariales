@@ -15,8 +15,10 @@ import com.proyect.Human_Resources.models.UserCompany;
 @Service
 public class UserCompanyService {
 
-    private String generateApiKey() {
-        return UUID.randomUUID().toString().replace("-", "").substring(0, 30);
+    protected String generateApiKey() {
+        String apiKey = UUID.randomUUID().toString().replace("-", "")+ System.currentTimeMillis();
+        apiKey = apiKey.substring(0, 40); // Ensure the API key is 40 characters long
+        return apiKey;
     }
 
     @Autowired

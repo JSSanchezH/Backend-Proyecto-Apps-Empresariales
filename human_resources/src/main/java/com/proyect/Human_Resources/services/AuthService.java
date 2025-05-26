@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.proyect.Human_Resources.Execeptions.UserAlreadyExisteException;
@@ -20,6 +21,9 @@ public class AuthService {
     private final ICompanyRepository companyRepository;
     private final IUserCompanyRepository userCompanyRepository;
     private final PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserCompanyService userCompanyService;
 
     public AuthService(ICompanyRepository companyRepository,
             IUserCompanyRepository userCompanyRepository,
@@ -53,7 +57,7 @@ public class AuthService {
         UserCompany user = new UserCompany();
         user.setUserName(request.getUser().getUserName());
         user.setPassword(passwordEncoder.encode(request.getUser().getPassword()));
-        user.setApiKey(request.getUser().getApiKey());
+        user.setApiKey(userCompanyService.generateApiKey());
         user.setCompany(savedCompany);
 
         userCompanyRepository.save(user);

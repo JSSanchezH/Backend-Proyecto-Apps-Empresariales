@@ -1,5 +1,6 @@
 package com.proyect.Human_Resources.controllers;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,7 +33,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<String> login(@RequestBody CompanyLoginRequest request) {
         try {
             String apiKey = authService.login(request.getUserName(), request.getPassword());
             return ResponseEntity.ok(apiKey);

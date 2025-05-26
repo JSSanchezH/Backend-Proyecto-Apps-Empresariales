@@ -7,7 +7,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proyect.Human_Resources.Execeptions.UserAlreadyExisteException;
+import com.proyect.Human_Resources.Exceptions.UserAlreadyExistException;
 import com.proyect.Human_Resources.Repositories.IUserCompanyRepository;
 import com.proyect.Human_Resources.models.UserCompany;
 
@@ -31,7 +31,7 @@ public class UserCompanyService {
     public UserCompany saveUserCompany(UserCompany userCompany) {
         Optional<UserCompany> existingUser = userCompanyRepository.findByUserName(userCompany.getUserName());
         if (existingUser.isPresent()) {
-            throw new UserAlreadyExisteException("User already exists");
+            throw new UserAlreadyExistException("User already exists");
         }
         userCompany.setApiKey(generateApiKey());
         return userCompanyRepository.save(userCompany); // Saves a new UserCompany record and returns it

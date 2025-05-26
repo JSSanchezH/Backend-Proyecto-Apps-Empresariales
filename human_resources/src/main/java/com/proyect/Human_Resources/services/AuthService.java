@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.proyect.Human_Resources.Execeptions.UserAlreadyExisteException;
+import com.proyect.Human_Resources.Exceptions.UserAlreadyExistException;
 import com.proyect.Human_Resources.Repositories.ICompanyRepository;
 import com.proyect.Human_Resources.Repositories.IUserCompanyRepository;
 import com.proyect.Human_Resources.dto.CompanyRegisterRequest;
@@ -39,10 +39,9 @@ public class AuthService {
                 .findByUserName(request.getUser().getUserName());
 
         if (existingUser.isPresent()) {
-            throw new UserAlreadyExisteException("User already exists with username: "
+            throw new UserAlreadyExistException("User already exists with username: "
                     + request.getUser().getUserName());
         }
-
 
         Company company = new Company();
         company.setName(request.getCompany().getName());
@@ -67,6 +66,10 @@ public class AuthService {
 
     public UserCompany getAuthenticatedUser(HttpServletRequest request) {
         return (UserCompany) request.getAttribute("authenticatedUser");
+    }
+
+    public void setUserCompanyService(UserCompanyService userCompanyService) {
+        this.userCompanyService = userCompanyService;
     }
 
 }

@@ -122,4 +122,54 @@ public class AuthServiceTest {
         verify(httpServletRequest).getAttribute("authenticatedUser");
     }
 
+    @Test
+void testLoginSuccess() {
+    String rawPassword = "password123";
+    String encodedPassword = "encodedPassword";
+    String apiKey = "testApiKey";
+
+    userCompany.setPassword(encodedPassword);
+    userCompany.setApiKey(apiKey);
+
+    when(userCompanyRepository.findByUserName("testuser")).thenReturn(Optional.of(userCompany));
+    when(passwordEncoder.matches(rawPassword, encodedPassword)).thenReturn(true);
+
+    String result = authService.login("testuser", rawPassword);
+
+    assertEquals(apiKey, result);
+    verify(userCompanyRepository).findByUserName("testuser");
+    verify(passwordEncoder).matches(rawPassword, encodedPassword);
+}
+
+@Test
+void testLoginUserNotFound() {
+    when(userCompanyRepository.findByUserName("nonexistent")).thenReturn(Optional.empty());
+
+    RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+        authService.login("nonexistent", "password");
+    });
+
+    assertEquals("User not found", exception.getMessage());
+    verify(userCompanyRepository).findByUserName("nonexistent");
+}
+
+@Test
+void testLoginInvalidPassword() {
+    String wrongPassword = "wrongPassword";
+    String encodedPassword = "encodedPassword";
+
+    userCompany.setPassword(encodedPassword);
+
+    when(userCompanyRepository.findByUserName("testuser")).thenReturn(Optional.of(userCompany));
+    when(passwordEncoder.matches(wrongPassword, encodedPassword)).thenReturn(false);
+
+    RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+        authService.login("testuser", wrongPassword);
+    });
+
+    assertEquals("Invalid credentials", exception.getMessage());
+    verify(userCompanyRepository).findByUserName("testuser");
+    verify(passwordEncoder).matches(wrongPassword, encodedPassword);
+}
+
 }

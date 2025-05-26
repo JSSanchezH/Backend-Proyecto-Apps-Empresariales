@@ -19,7 +19,7 @@ public class AuthController {
         this.authService = authService;
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<?> registerCompanyWithUser(@RequestBody CompanyRegisterRequest request) {
         try {
             String result = authService.registerCompanyWithUser(request);

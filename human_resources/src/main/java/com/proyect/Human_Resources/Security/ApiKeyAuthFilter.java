@@ -42,6 +42,10 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter { // Extends OncePerR
             FilterChain filterChain)
             throws ServletException, IOException {
 
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            filterChain.doFilter(request, response);
+            return;
+        }
         String path = request.getRequestURI();
 
         // Check if the request path is public

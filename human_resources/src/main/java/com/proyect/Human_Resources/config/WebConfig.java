@@ -18,14 +18,14 @@ public class WebConfig {
         registry.addMapping("/**")
             .allowedOrigins("http://localhost:4200") // permite Angular en desarrollo
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-            .allowedHeaders("*")
+            .allowedHeaders(List.of("*"))
             .allowCredentials(true);
       }
     };
   }
 
   @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+  public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 }

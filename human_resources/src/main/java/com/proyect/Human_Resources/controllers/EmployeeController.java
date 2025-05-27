@@ -35,7 +35,8 @@ public class EmployeeController {
     @GetMapping
     public ArrayList<Employee> getEmployees(HttpServletRequest request) {
         UserCompany userCompany = authService.getAuthenticatedUser(request); // Retrieves the authenticated user
-        return employeeService.getEmployeesByCompanyNit(userCompany.getCompany().getNit()); // Retrieves employees by company NIT
+        return employeeService.getEmployeesByCompanyNit(userCompany.getCompany().getNit()); // Retrieves employees by
+                                                                                            // company NIT
     }
 
     // Endpoint to save a new employee
@@ -72,5 +73,5 @@ public class EmployeeController {
             return "Error deleting employee"; // Returns error message if deletion failed
         }
     }
-    
+
 }

@@ -30,6 +30,19 @@ public class History {
     @Column(name = "reason", nullable = false) // Column annotation to specify the mapping of the start_date attribute to the database
     private String reason; // Reason for the history record
 
+    // Default constructor for JPA
+    public History() {
+        // No-arg constructor required by JPA
+    }
+
+    // Parameterized constructor to initialize the History object with specific values
+    public History(long id,Employee employee, Date endDate, String reason) {
+        this.id = id; // Sets the unique identifier of the history record
+        this.employee = employee; // Sets the employee associated with the history record
+        this.endDate = endDate; // Sets the end date of the history record
+        this.reason = reason; // Sets the reason for the history record
+    }
+
     // Getters and Setters for accessing and modifying the attributes of the History class
 
     public long getId() {

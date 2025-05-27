@@ -26,6 +26,21 @@ public class Headquarter {
     @JoinColumn(name = "company_id", nullable = false) // Specifies the foreign key column in the headquarters table that references the companies table
     private Company company; // The company associated with the headquarter
 
+    // Default constructor for JPA
+    public Headquarter() {
+        // No-argument constructor required by JPA
+    }
+
+    // Parameterized constructor to initialize the Headquarter object with specific values
+    public Headquarter(long id, String name, String address, long phone, City city, Company company) {
+        this.id = id; // Sets the unique identifier of the headquarter
+        this.name = name; // Sets the name of the headquarter
+        this.address = address; // Sets the address of the headquarter
+        this.phone = phone; // Sets the phone number of the headquarter
+        this.city = city; // Sets the city associated with the headquarter
+        this.company = company; // Sets the company associated with the headquarter
+    }
+
     // Getters and Setters for accessing and modifying the attributes of the Headquarter class
 
     public long getId() {

@@ -22,6 +22,18 @@ public class City {
     private State state; // The state associated with the city
     // The state_id column in the cities table references the id column in the states table
 
+    // Default constructor
+    public City() {
+        // No-argument constructor for JPA
+    }
+
+    // Parameterized constructor to initialize the City object with name and state
+    public City(Long id,String name, State state) {
+        this.id = id; // Sets the unique identifier of the city
+        this.name = name; // Sets the name of the city
+        this.state = state; // Sets the state associated with the city
+    }
+
     // Getters and Setters for accessing and modifying the attributes of the City class
 
     public Long getId() {

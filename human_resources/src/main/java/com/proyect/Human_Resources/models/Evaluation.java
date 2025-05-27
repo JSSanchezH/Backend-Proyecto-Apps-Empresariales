@@ -39,6 +39,24 @@ public class Evaluation {
     @Column(name = "proactivity", nullable = false) // Column annotation to specify the mapping of the proactivity attribute to the database
     private long proactivity; // Proactivity score of the employee in the evaluation
 
+    // Default constructor for JPA
+    public Evaluation() {
+        // No-argument constructor required by JPA
+    }
+
+    // Parameterized constructor to initialize the Evaluation object with specific values
+    public Evaluation(Long id, Employee employee, Date evaluationDate, long punctuality, long performance, long courtesy, long precision, long collaboration, long proactivity) {
+        this.id = id; // Sets the unique identifier of the evaluation
+        this.employee = employee; // Sets the employee associated with the evaluation
+        this.evaluationDate = evaluationDate; // Sets the date of the evaluation
+        this.punctuality = punctuality; // Sets the punctuality score of the employee in the evaluation
+        this.performance = performance; // Sets the performance score of the employee in the evaluation
+        this.courtesy = courtesy; // Sets the courtesy score of the employee in the evaluation
+        this.precision = precision; // Sets the precision score of the employee in the evaluation
+        this.collaboration = collaboration; // Sets the collaboration score of the employee in the evaluation
+        this.proactivity = proactivity; // Sets the proactivity score of the employee in the evaluation
+    }
+
     // GFetters and Setters for accessing and modifying the attributes of the Evaluation class
 
     public Long getId() {

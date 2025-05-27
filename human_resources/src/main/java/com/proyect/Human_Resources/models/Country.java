@@ -21,8 +21,18 @@ public class Country {
     private Continent continent; // The continent associated with the country
     // The continent_id column in the countries table references the id column in the continents table
 
-    // Getters and Setters for accessing and modifying the attributes of the Country class
+    public Country() {
+        // Default constructor for JPA
+    }
 
+
+    public Country(Long id, String name, Continent continent) {
+        this.id = id; // Initializing the unique identifier of the country
+        this.name = name; // Initializing the name of the country
+        this.continent = continent; // Initializing the continent associated with the country
+    }
+
+    // Getters and Setters for accessing and modifying the attributes of the Country class
     public Long getId() {
         return id; // Returns the unique identifier of the country
     }

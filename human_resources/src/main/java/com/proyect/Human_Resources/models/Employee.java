@@ -42,6 +42,25 @@ public class Employee {
     @Column(name = "status", nullable = false) // Column annotation to specify the mapping of the status attribute to the database
     private boolean status; // Status of the employee (active/inactive)
 
+    // Default constructor for JPA
+    public Employee() {
+        // No-argument constructor required by JPA
+    }
+
+    // Parameterized constructor to initialize the Employee object with specific values
+    public Employee(Long id, String firstname, String lastname, String email, String phoneNumber, Date hireDate, Role role, Department department, String urlFoto, boolean status) {
+        this.id = id; // Sets the unique identifier of the employee
+        this.firstname = firstname; // Sets the first name of the employee
+        this.lastname = lastname; // Sets the last name of the employee
+        this.email = email; // Sets the email of the employee
+        this.phoneNumber = phoneNumber; // Sets the phone number of the employee
+        this.hireDate = hireDate; // Sets the hire date of the employee
+        this.role = role; // Sets the role associated with the employee
+        this.department = department; // Sets the department associated with the employee
+        this.urlFoto = urlFoto; // Sets the URL of the employee's photo
+        this.status = status; // Sets the status of the employee (active/inactive)
+    }
+
     // Getters and Setters for accessing and modifying the attributes of the Employee class
 
     public Long getId() {

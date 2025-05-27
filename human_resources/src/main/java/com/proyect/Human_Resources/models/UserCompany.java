@@ -27,6 +27,21 @@ public class UserCompany {
     @Column(name = "api_key", nullable = false, length = 100) // Column annotation to specify the mapping of the api_key attribute to the database
     private String apiKey; // API key for the user associated with the company
 
+    // Default constructor for JPA
+    public UserCompany() {
+        // No-argument constructor required by JPA
+    }
+
+    // Parameterized constructor to initialize the UserCompany object with specific values
+
+    public UserCompany(Long id, Company company, String userName, String password, String apiKey) {
+        this.id = id; // Sets the unique identifier of the user_company record
+        this.company = company; // Sets the company associated with the user_company record
+        this.userName = userName; // Sets the username of the user associated with the company
+        this.password = password; // Sets the password of the user associated with the company
+        this.apiKey = apiKey; // Sets the API key of the user associated with the company
+    }
+
     // Getters and Setters for accessing and modifying the attributes of the UserCompany class
 
     public Long getId() {

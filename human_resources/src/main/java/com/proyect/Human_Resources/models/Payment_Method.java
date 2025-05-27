@@ -16,6 +16,17 @@ public class Payment_Method {
     // The name column is not nullable and has a maximum length of 50 characters
     private String name; // Name of the payment method
 
+    // Default constructor for JPA
+    public Payment_Method() {
+        // No-argument constructor required by JPA
+    }
+
+    // Parameterized constructor to initialize the Payment_Method object with an ID and name
+    public Payment_Method(Long id, String name) {
+        this.id = id; // Sets the unique identifier of the payment method
+        this.name = name; // Sets the name of the payment method
+    }
+
     // Getters and Setters for accessing and modifying the attributes of the Payment_Method class
 
     public Long getId() {

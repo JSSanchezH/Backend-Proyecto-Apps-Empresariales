@@ -1,5 +1,6 @@
 package com.proyect.Human_Resources.config;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,7 +19,7 @@ public class WebConfig {
         registry.addMapping("/**")
             .allowedOrigins("http://localhost:4200") // permite Angular en desarrollo
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-            .allowedHeaders(List.of("*"))
+            .allowedHeaders("*")
             .allowCredentials(true);
       }
     };

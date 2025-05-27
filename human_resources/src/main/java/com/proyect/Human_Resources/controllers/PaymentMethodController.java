@@ -18,7 +18,7 @@ import com.proyect.Human_Resources.services.Payment_MethodService;
 
 @RestController
 @RequestMapping("/payment-methods")
-public class Payment_MethodController {
+public class PaymentMethodController {
 
     @Autowired
     private Payment_MethodService paymentMethodService;

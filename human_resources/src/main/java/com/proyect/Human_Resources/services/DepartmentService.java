@@ -33,6 +33,10 @@ public class DepartmentService {
         return departmentRepository.findById(id); // Retrieve a department by its ID from the repository
     }
 
+    public Optional<Department> getDepartmentsByHeadquarterId(Long id) {
+        return departmentRepository.findByHeadquarterId(id); // Retrieve departments by headquarter ID from the repository
+    }
+
     public Department updateDepartment(Department department, Long id) {
         Department departmentToUpdate = departmentRepository.findById(id).get(); // Retrieve the department to update
         departmentToUpdate.setName(department.getName()); // Update the name of the department

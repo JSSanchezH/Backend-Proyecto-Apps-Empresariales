@@ -51,6 +51,11 @@ public class DepartmentController {
         return departmentService.getDepartmentById(id);
     }
 
+    @GetMapping(path = "/headquarter/{id}")
+    public Optional<Department> getDepartmentsByHeadquarterId(@PathVariable("id") long id) {
+        return departmentService.getDepartmentsByHeadquarterId(id);
+    }
+
     @PutMapping(path = "/{id}")
     public Department updateDepartment(@RequestBody Department department, @PathVariable("id") long id) {
         return departmentService.updateDepartment(department, id);

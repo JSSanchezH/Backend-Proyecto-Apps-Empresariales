@@ -46,4 +46,8 @@ public class StateService {
             return false;
         }
     }
+
+    public ArrayList<State> getStatesByCountryId(Long id) {
+        return stateRepository.findByCountryId(id);
+    }
 }

@@ -59,4 +59,9 @@ public class StateController {
             return "Error deleting state"; // Returns error message
         }
     }
+
+    @GetMapping("/country/{id}")
+    public ArrayList<State> getStatesByCountryId(@PathVariable("id") Long id) {
+        return stateService.getStatesByCountryId(id); // Returns states by country ID
+    }
 }

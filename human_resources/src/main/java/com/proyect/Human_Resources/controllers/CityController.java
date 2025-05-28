@@ -59,4 +59,9 @@ public class CityController {
             return "Error deleting city"; // Returns error message
         }
     }
+
+    @GetMapping("/state/{id}")
+    public ArrayList<City> getCitiesByStateId(@PathVariable("id") Long id) {
+        return cityService.getCitiesByStateId(id); // Returns a list of cities by state ID
+    }
 }

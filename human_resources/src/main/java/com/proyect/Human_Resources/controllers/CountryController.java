@@ -57,4 +57,9 @@ public class CountryController {
             return "Error deleting country";
         }
     }
+
+    @GetMapping("/continent/{id}")
+    public ArrayList<Country> getCountriesByContinentId(@PathVariable("id") Long id) {
+        return countryService.getCountriesByContinentId(id);
+    }
 }

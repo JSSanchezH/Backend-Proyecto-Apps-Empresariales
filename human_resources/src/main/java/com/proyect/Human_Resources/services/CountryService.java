@@ -48,5 +48,9 @@ public class CountryService {
         }
     }
 
+    public ArrayList<Country> getCountriesByContinentId(Long id) {
+        return countryRepository.findByContinentId(id);
+    }
+
     
 }

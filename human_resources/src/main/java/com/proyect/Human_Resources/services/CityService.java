@@ -46,5 +46,9 @@ public class CityService {
             return false; // Returns false if there was an error during deletion
         }
     }
+
+    public ArrayList<City> getCitiesByStateId(Long id) {
+        return cityRepository.findByStateId(id); // Returns a list of cities by state ID
+    }
     
 }

@@ -34,10 +34,28 @@ public class Evaluation {
     private long precision; // Precision score of the employee in the evaluation
     
     @Column(name = "collaboration", nullable = false) // Column annotation to specify the mapping of the collaboration attribute to the database
-    private long colaboration; // Collaboration score of the employee in the evaluation
+    private long collaboration; // Collaboration score of the employee in the evaluation
 
     @Column(name = "proactivity", nullable = false) // Column annotation to specify the mapping of the proactivity attribute to the database
     private long proactivity; // Proactivity score of the employee in the evaluation
+
+    // Default constructor for JPA
+    public Evaluation() {
+        // No-argument constructor required by JPA
+    }
+
+    // Parameterized constructor to initialize the Evaluation object with specific values
+    public Evaluation(Long id, Employee employee, Date evaluationDate, long punctuality, long performance, long courtesy, long precision, long collaboration, long proactivity) {
+        this.id = id; // Sets the unique identifier of the evaluation
+        this.employee = employee; // Sets the employee associated with the evaluation
+        this.evaluationDate = evaluationDate; // Sets the date of the evaluation
+        this.punctuality = punctuality; // Sets the punctuality score of the employee in the evaluation
+        this.performance = performance; // Sets the performance score of the employee in the evaluation
+        this.courtesy = courtesy; // Sets the courtesy score of the employee in the evaluation
+        this.precision = precision; // Sets the precision score of the employee in the evaluation
+        this.collaboration = collaboration; // Sets the collaboration score of the employee in the evaluation
+        this.proactivity = proactivity; // Sets the proactivity score of the employee in the evaluation
+    }
 
     // GFetters and Setters for accessing and modifying the attributes of the Evaluation class
 
@@ -97,12 +115,12 @@ public class Evaluation {
         this.precision = precision; // Sets the precision score of the employee in the evaluation
     }
 
-    public long getColaboration() {
-        return colaboration; // Returns the collaboration score of the employee in the evaluation
+   public long getCollaboration() {
+        return collaboration; // Returns the collaboration score of the employee in the evaluation
     }
 
-    public void setColaboration(long colaboration) {
-        this.colaboration = colaboration; // Sets the collaboration score of the employee in the evaluation
+    public void setCollaboration(long collaboration) {
+        this.collaboration = collaboration; // Sets the collaboration score of the employee in the evaluation
     }
 
     public long getProactivity() {

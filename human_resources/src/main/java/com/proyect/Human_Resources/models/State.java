@@ -21,6 +21,16 @@ public class State {
     private Country country; // The country associated with the state
     // The country_id column in the states table references the id column in the countries table
 
+    public State() {
+        // Default constructor for JPA
+    }
+
+    public State(Long id, String name, Country country) {
+        this.id = id; // Initializing the unique identifier of the state
+        this.name = name; // Initializing the name of the state
+        this.country = country; // Initializing the country associated with the state
+    }
+
     // Getters and Setters for accessing and modifying the attributes of the State class
 
     public Long getId() {

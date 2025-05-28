@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyect.Human_Resources.models.Employee;
+import com.proyect.Human_Resources.models.UserCompany;
+import com.proyect.Human_Resources.services.AuthService;
 import com.proyect.Human_Resources.services.EmployeeService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/employees")
@@ -23,11 +27,16 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService; // Service for handling employee-related operations
 
+    @Autowired
+    private AuthService authService; // Service for handling authentication
+
     // Endpoint to get all employees
 
     @GetMapping
-    public ArrayList<Employee> getEmployees() {
-        return employeeService.getEmployees(); // Retrieves all employees from the service
+    public ArrayList<Employee> getEmployees(HttpServletRequest request) {
+        UserCompany userCompany = authService.getAuthenticatedUser(request); // Retrieves the authenticated user
+        return employeeService.getEmployeesByCompanyNit(userCompany.getCompany().getNit()); // Retrieves employees by
+                                                                                            // company NIT
     }
 
     // Endpoint to save a new employee
@@ -64,5 +73,5 @@ public class EmployeeController {
             return "Error deleting employee"; // Returns error message if deletion failed
         }
     }
-    
+
 }

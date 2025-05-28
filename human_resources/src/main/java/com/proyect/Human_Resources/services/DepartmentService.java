@@ -17,8 +17,8 @@ public class DepartmentService {
 
     // Method to save a department
 
-    public ArrayList<Department> getDepartments() {
-        return (ArrayList<Department>) departmentRepository.findAll(); // Retrieve all departments from the repository
+    public ArrayList<Department> getDepartmentsByCompanyNit(long nit) {
+        return departmentRepository.findByHeadquarterCompanyNit(nit); // Retrieve all departments from the repository
     }
 
     public Department saveDepartment(Department department) {
@@ -31,6 +31,10 @@ public class DepartmentService {
 
     public Optional<Department> getDepartmentById(Long id) {
         return departmentRepository.findById(id); // Retrieve a department by its ID from the repository
+    }
+
+    public ArrayList<Department> getDepartmentsByHeadquarterId(Long id) {
+        return departmentRepository.findByHeadquarterId(id); // Retrieve departments by headquarter ID from the repository
     }
 
     public Department updateDepartment(Department department, Long id) {

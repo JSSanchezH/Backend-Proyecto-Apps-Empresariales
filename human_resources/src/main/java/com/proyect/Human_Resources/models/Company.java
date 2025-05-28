@@ -35,6 +35,21 @@ public class Company {
     // The url_Logo column is not nullable and has a maximum length of 100 characters
     private String urlLogo; // URL of the company's logo
 
+    // Default constructor for JPA
+    public Company() {
+        // No-argument constructor required by JPA
+    }
+
+    // Parameterized constructor to initialize the Company object with specific values
+    public Company(Long id,String name, long nit, String address, String email, String typeIndustry, String urlLogo) {
+        this.name = name; // Sets the name of the company
+        this.nit = nit; // Sets the NIT of the company
+        this.address = address; // Sets the address of the company
+        this.email = email; // Sets the email of the company
+        this.typeIndustry = typeIndustry; // Sets the type of industry of the company
+        this.urlLogo = urlLogo; // Sets the URL of the company's logo
+    }
+
     // Getters and Setters for accessing and modifying the attributes of the Company class
 
     public Long getId() {

@@ -32,9 +32,9 @@ public class RoleService {
     }
 
     public Role updateRole(Role role, long id){
-        Role roleToUpdRoleate = roleRepository.findById(id).get();
-        roleToUpdRoleate.setName(role.getName());
-        return roleRepository.save(roleToUpdRoleate);
+        Role roleToUpdRole = roleRepository.findById(id).get();
+        roleToUpdRole.setName(role.getName());
+        return roleRepository.save(roleToUpdRole);
     }
 
     public boolean deleteRole(long id){

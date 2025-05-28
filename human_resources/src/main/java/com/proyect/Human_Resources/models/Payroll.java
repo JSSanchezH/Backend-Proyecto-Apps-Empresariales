@@ -35,6 +35,23 @@ public class Payroll {
     @JoinColumn(name = "payment_method_id", nullable = false) // Specifies the foreign key column in the payroll table that references the payment_methods table
     private Payment_Method paymentMethod; // The payment method used for the payroll record
 
+    // Default constructor
+    public Payroll() {
+        // No-argument constructor for JPA
+    }
+
+    // Parameterized constructor to initialize the Payroll object with specific values
+
+    public Payroll(Long id,Employee employee, Date paymentDate, double baseSalary, double bonuses, double totalPayment, Payment_Method paymentMethod) {
+        this.id = id; // Sets the unique identifier of the payroll record
+        this.employee = employee; // Sets the employee associated with the payroll record
+        this.paymentDate = paymentDate; // Sets the date of the payroll payment
+        this.baseSalary = baseSalary; // Sets the base salary of the employee
+        this.bonuses = bonuses; // Sets the bonus amount for the employee
+        this.totalPayment = totalPayment; // Sets the total payment amount for the employee
+        this.paymentMethod = paymentMethod; // Sets the payment method used for the payroll record
+    }
+
     // Getters and Setters for accessing and modifying the attributes of the Payroll class
 
     public Long getId() {

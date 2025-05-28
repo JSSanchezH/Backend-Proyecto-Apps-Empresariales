@@ -15,8 +15,8 @@ public class PayrollService {
     @Autowired
     private IPayrollRepository payrollRepository; // Injecting the ISalaryRepository dependency
 
-    public ArrayList<Payroll> getPayrolls() {
-        return (ArrayList<Payroll>) payrollRepository.findAll(); // Retrieves all payroll records from the database
+    public ArrayList<Payroll> getPayrolls(long nit) {
+        return (ArrayList<Payroll>) payrollRepository.findByEmployeeDepartmentHeadquarterCompanyNit(nit); // Retrieves all payroll records from the database
     }
 
     public Payroll savePayroll(Payroll payroll) {

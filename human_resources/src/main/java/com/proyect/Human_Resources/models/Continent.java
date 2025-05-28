@@ -18,6 +18,15 @@ public class Continent {
     // The name column is not nullable and has a maximum length of 100 characters
     private String name; // Name of the continent
 
+    public Continent() {
+        // Default constructor for JPA
+    }
+
+    public Continent(Long id, String name) {
+        this.id = id; // Initializing the unique identifier of the continent
+        this.name = name; // Initializing the name of the continent
+    }
+
     // Getters and Setters for accessing and modifying the attributes of the
     // Continent class
 

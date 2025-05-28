@@ -20,6 +20,19 @@ public class Department {
     @JoinColumn(name = "headquarter_id", nullable = false) // Specifies the foreign key column in the departments table that references the headquarters table
     private Headquarter headquarter; // The headquarter associated with the department
 
+    // Default constructor for JPA
+    public Department() {
+        // No-argument constructor required by JPA
+    }
+
+    // Parameterized constructor to initialize the Department object with specific values
+
+    public Department(Long id, String name, Headquarter headquarter) {
+        this.id = id; // Sets the unique identifier of the department
+        this.name = name; // Sets the name of the department
+        this.headquarter = headquarter; // Sets the headquarter associated with the department
+    }
+
     // Getters and Setters for accessing and modifying the attributes of the Department class
 
     public Long getId() {

@@ -18,7 +18,7 @@ import com.proyect.Human_Resources.services.Absence_TypeService;
 
 @RestController
 @RequestMapping("/absence_types")
-public class Absence_TypeController {
+public class AbsenceTypeController  {
 
     @Autowired
     private Absence_TypeService absenceTypeService;

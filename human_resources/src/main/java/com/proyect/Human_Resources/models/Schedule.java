@@ -29,6 +29,23 @@ public class Schedule {
     @OneToOne
     @JoinColumn(name = "employee_id", nullable = false) // Specifies the foreign key column in the schedules table that references the employees table
     private Employee employee; // The employee associated with the schedule
+
+    // Default constructor for JPA
+
+    public Schedule() {
+        // No-argument constructor required by JPA
+    }
+
+    // Parameterized constructor to initialize the Schedule object with specific values
+
+    public Schedule(Long id, Time startTime, Time endTime, Time breakStart, Time breakEnd, Employee employee) {
+        this.id = id; // Sets the unique identifier of the schedule
+        this.startTime = startTime; // Sets the start time of the schedule
+        this.endTime = endTime; // Sets the end time of the schedule
+        this.breakStart = breakStart; // Sets the start time of the break
+        this.breakEnd = breakEnd; // Sets the end time of the break
+        this.employee = employee; // Sets the employee associated with the schedule
+    }
     
 
     // Getters and Setters for accessing and modifying the attributes of the Schedule class

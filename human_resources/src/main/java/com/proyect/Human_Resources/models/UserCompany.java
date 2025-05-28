@@ -21,8 +21,26 @@ public class UserCompany {
     @Column(name = "username", nullable = false, length = 50) // Column annotation to specify the mapping of the username attribute to the database
     private String userName; // Username of the user associated with the company
 
-    @Column(name = "password", nullable = false, length = 50) // Column annotation to specify the mapping of the password attribute to the database
+    @Column(name = "password", nullable = false, length = 150) // Column annotation to specify the mapping of the password attribute to the database
     private String password; // Password of the user associated with the company
+
+    @Column(name = "api_key", nullable = false, length = 100) // Column annotation to specify the mapping of the api_key attribute to the database
+    private String apiKey; // API key for the user associated with the company
+
+    // Default constructor for JPA
+    public UserCompany() {
+        // No-argument constructor required by JPA
+    }
+
+    // Parameterized constructor to initialize the UserCompany object with specific values
+
+    public UserCompany(Long id, Company company, String userName, String password, String apiKey) {
+        this.id = id; // Sets the unique identifier of the user_company record
+        this.company = company; // Sets the company associated with the user_company record
+        this.userName = userName; // Sets the username of the user associated with the company
+        this.password = password; // Sets the password of the user associated with the company
+        this.apiKey = apiKey; // Sets the API key of the user associated with the company
+    }
 
     // Getters and Setters for accessing and modifying the attributes of the UserCompany class
 
@@ -57,4 +75,13 @@ public class UserCompany {
     public void setPassword(String password) {
         this.password = password; // Sets the password of the user associated with the company
     }
+
+    public String getApiKey() {
+        return apiKey; // Returns the API key of the user associated with the company
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey; // Sets the API key of the user associated with the company
+    }
+    
 }

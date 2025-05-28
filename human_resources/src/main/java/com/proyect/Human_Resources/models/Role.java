@@ -22,6 +22,12 @@ public class Role {
     @Column(name = "name", nullable = false, length = 50) 
     private String name; // Name of the role
 
+
+    public Role(Long id, String name) {
+        this.id = id; // Sets the unique identifier of the role
+        this.name = name; // Sets the name of the role
+    }
+
     // Getters and Setters for accessing and modifying the attributes of the Role class
 
     public Long getId() {

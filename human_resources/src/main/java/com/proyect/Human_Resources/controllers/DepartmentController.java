@@ -52,7 +52,7 @@ public class DepartmentController {
     }
 
     @GetMapping(path = "/headquarter/{id}")
-    public Optional<Department> getDepartmentsByHeadquarterId(@PathVariable("id") long id) {
+    public ArrayList<Department> getDepartmentsByHeadquarterId(@PathVariable("id") long id) {
         return departmentService.getDepartmentsByHeadquarterId(id);
     }
 

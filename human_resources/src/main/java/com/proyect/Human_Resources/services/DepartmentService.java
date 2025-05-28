@@ -33,7 +33,7 @@ public class DepartmentService {
         return departmentRepository.findById(id); // Retrieve a department by its ID from the repository
     }
 
-    public Optional<Department> getDepartmentsByHeadquarterId(Long id) {
+    public ArrayList<Department> getDepartmentsByHeadquarterId(Long id) {
         return departmentRepository.findByHeadquarterId(id); // Retrieve departments by headquarter ID from the repository
     }
 

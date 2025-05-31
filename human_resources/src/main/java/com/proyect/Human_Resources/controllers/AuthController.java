@@ -1,5 +1,7 @@
 package com.proyect.Human_Resources.controllers;
 
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyect.Human_Resources.dto.CompanyRegisterRequest;
+import com.proyect.Human_Resources.dto.LoginResponse;
 import com.proyect.Human_Resources.dto.CompanyLoginRequest;
 
 import com.proyect.Human_Resources.services.AuthService;
@@ -32,13 +35,13 @@ public class AuthController {
         }
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody CompanyLoginRequest request) {
-        try {
-            String apiKey = authService.login(request.getUserName(), request.getPassword());
-            return ResponseEntity.ok(apiKey);
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
-        }
+@PostMapping("/login")
+public ResponseEntity<?> login(@RequestBody CompanyLoginRequest request) {
+    try {
+        LoginResponse response = authService.login(request.getUserName(), request.getPassword());
+        return ResponseEntity.ok(response);
+    } catch (RuntimeException e) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", e.getMessage()));
     }
+}
 }

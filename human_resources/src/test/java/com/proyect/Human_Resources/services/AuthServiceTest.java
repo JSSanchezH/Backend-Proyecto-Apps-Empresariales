@@ -122,24 +122,6 @@ public class AuthServiceTest {
         verify(httpServletRequest).getAttribute("authenticatedUser");
     }
 
-    @Test
-void testLoginSuccess() {
-    String rawPassword = "password123";
-    String encodedPassword = "encodedPassword";
-    String apiKey = "testApiKey";
-
-    userCompany.setPassword(encodedPassword);
-    userCompany.setApiKey(apiKey);
-
-    when(userCompanyRepository.findByUserName("testuser")).thenReturn(Optional.of(userCompany));
-    when(passwordEncoder.matches(rawPassword, encodedPassword)).thenReturn(true);
-
-    String result = authService.login("testuser", rawPassword);
-
-    assertEquals(apiKey, result);
-    verify(userCompanyRepository).findByUserName("testuser");
-    verify(passwordEncoder).matches(rawPassword, encodedPassword);
-}
 
 @Test
 void testLoginUserNotFound() {

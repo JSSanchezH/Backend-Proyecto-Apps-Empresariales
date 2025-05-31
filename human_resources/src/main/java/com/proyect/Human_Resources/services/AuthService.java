@@ -2,6 +2,8 @@ package com.proyect.Human_Resources.services;
 
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import com.proyect.Human_Resources.Exceptions.UserAlreadyExistException;
 import com.proyect.Human_Resources.Repositories.ICompanyRepository;
 import com.proyect.Human_Resources.Repositories.IUserCompanyRepository;
 import com.proyect.Human_Resources.dto.CompanyRegisterRequest;
+import com.proyect.Human_Resources.dto.LoginResponse;
 import com.proyect.Human_Resources.models.Company;
 import com.proyect.Human_Resources.models.UserCompany;
 
@@ -33,21 +36,22 @@ public class AuthService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public String login(String userName, String password) {
-        Optional<UserCompany> userOptional = userCompanyRepository.findByUserName(userName);
+public LoginResponse login(String userName, String password) {
+    Optional<UserCompany> userOptional = userCompanyRepository.findByUserName(userName);
 
-        if (userOptional.isEmpty()) {
-            throw new RuntimeException("User not found");
-        }
-
-        UserCompany user = userOptional.get();
-
-        if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new RuntimeException("Invalid credentials");
-        }
-
-        return user.getApiKey();
+    if (userOptional.isEmpty()) {
+        throw new RuntimeException("User not found");
     }
+
+    UserCompany user = userOptional.get();
+
+    if (!passwordEncoder.matches(password, user.getPassword())) {
+        throw new RuntimeException("Invalid credentials");
+    }
+
+    return new LoginResponse(user.getApiKey(), user.getCompany().getId());
+}
+    
 
     public String registerCompanyWithUser(CompanyRegisterRequest request) {
 

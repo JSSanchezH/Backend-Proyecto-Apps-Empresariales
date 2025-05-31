@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class Headquarter {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id; // Unique identifier for the headquarter
 
     @Column(name = "name", nullable = false) // Column annotation to specify the mapping of the name attribute to the database
